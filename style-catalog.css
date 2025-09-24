@@ -21,18 +21,104 @@ body {
     line-height: 1.6;
 }
 
-.catalog-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 20px;
+/* ======================================= */
+/* ===         BAGIAN HEADER           === */
+/* ======================================= */
+header {
+    background-color: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 15px 0;
 }
 
-.catalog-header {
+header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    color: var(--primary-color);
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+    width: 100%;
+}
+
+/* Hamburger Menu (untuk mobile) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* ======================================= */
+/* ===       BAGIAN KONTEN UTAMA       === */
+/* ======================================= */
+main.catalog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    /* Memberi jarak dari atas agar tidak tertutup header */
+    padding-top: 100px; 
+}
+
+.page-title {
     text-align: center;
     margin-bottom: 40px;
 }
 
-.catalog-header h1 {
+.page-title h1 {
     font-family: var(--font-heading);
     font-size: 3rem;
     color: var(--primary-color);
@@ -44,6 +130,7 @@ body {
     justify-content: center;
     gap: 15px;
     margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
 .filter-btn {
@@ -57,12 +144,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.filter-btn:hover {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    border-color: var(--primary-color);
-}
-
+.filter-btn:hover,
 .filter-btn.active {
     background-color: var(--primary-color);
     color: var(--secondary-color);
@@ -85,9 +167,11 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .product-card.hide {
     display: none;
 }
+
 .product-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
@@ -119,7 +203,7 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Membuat bagian info ini mengisi sisa ruang */
+    flex-grow: 1;
 }
 
 .product-name {
@@ -138,7 +222,7 @@ body {
     font-size: 1.3rem;
     font-weight: 500;
     color: var(--primary-color);
-    margin-top: auto; /* Mendorong harga dan tombol ke bawah */
+    margin-top: auto;
     margin-bottom: 15px;
 }
 
@@ -158,13 +242,42 @@ body {
     background-color: #e0c5a1;
 }
 
-@media (max-width: 480px) {
-    .catalog-header h1 {
-        font-size: 2.2rem;
+/* Media Queries untuk Responsivitas */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 70px; /* Sesuaikan dengan tinggi header */
+        background-color: var(--background-color);
+        flex-direction: column;
+        width: 100%;
+        height: calc(100vh - 70px);
+        text-align: center;
+        transition: 0.3s;
+        padding-top: 50px;
+        gap: 20px;
     }
-    .filter-buttons {
-        gap: 8px;
-        flex-wrap: wrap;
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+    
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    
+    main.catalog-container {
+        padding-top: 90px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title h1 {
+        font-size: 2.2rem;
     }
     .filter-btn {
         padding: 8px 15px;

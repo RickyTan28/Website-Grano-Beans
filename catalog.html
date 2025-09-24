@@ -14,11 +14,28 @@
 </head>
 <body>
 
-    <div class="catalog-container">
-        <header class="catalog-header">
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">Grano Beans</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="index.html#about">Tentang Kami</a></li>
+                <li><a href="catalog.html">Katalog</a></li>
+                <li><a href="index.html#contact">Kontak</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>  
+    </header>   
+
+    <main class="catalog-container">
+        <div class="page-title">
             <h1>Katalog Kopi Kami</h1>
             <p>Jelajahi biji kopi pilihan dari berbagai daerah, disangrai dengan presisi untuk secangkir kopi sempurna Anda.</p>
-        </header>
+        </div>
 
         <div class="filter-buttons">
             <button class="filter-btn active" data-filter="all">Semua</button>
@@ -66,7 +83,7 @@
             </div>
             <div class="product-card" data-category="robusta">
                 <div class="product-image">
-                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lyxbnv8mirote2" alt="Biji Kopi Robusta Lampung">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lyxbnv8mirote2" style="transform: scale(1.04);" alt="Biji Kopi Robusta Lampung">
                     <span class="product-category">Robusta</span>
                 </div>
                 <div class="product-info">
@@ -76,7 +93,7 @@
                     <a href="#" class="product-cta">Lihat Detail</a>
                 </div>
             </div>
-             <div class="product-card" data-category="arabika">
+            <div class="product-card" data-category="arabika">
                 <div class="product-image">
                     <img src="https://down-id.img.susercontent.com/file/sg-11134201-23010-n71h0yk5mdmvb3" alt="Biji Kopi Bali Kintamani">
                     <span class="product-category">Arabika</span>
@@ -101,7 +118,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
     
     <script src="script-catalog.js"></script>
 </body>
